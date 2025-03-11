@@ -1,29 +1,26 @@
 // void NULL;
-#include "stek.h"
+#include "stack.h"
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-stek CreateStek() {
-  stek OUT;
+stack createStack() {
+  stack OUT;
   OUT.size = 0;
   OUT.massive = NULL;
 
   return OUT;
 }
 
-bool IsEmpty(stek *a) {
-  if ((*a).size <= 0)
-    return true;
-  return false;
-}
+bool isEmpty(stack *a) { return (*a).size <= 0; }
 
-int AddStekElements(stek *a, int element) {
+void addStackElements(stack *a, int element) {
   int m[(*a).size];
   for (int i = 0; i < (*a).size; i++) {
     m[i] = (*a).massive[i];
   }
+
   (*a).size++;
   free((*a).massive);
   (*a).massive = NULL;
@@ -32,19 +29,20 @@ int AddStekElements(stek *a, int element) {
     (*a).massive[i] = m[i];
   }
   (*a).massive[(*a).size - 1] = element;
-
-  return 0;
 }
 
-int Pop(stek *a) {
+int *pop(stack *a) {
   if ((*a).size <= 0)
-    return 0;
+    return NULL;
+
   (*a).size--;
   int m[(*a).size];
-  int b = (*a).massive[(*a).size];
+  int *b = malloc(sizeof(int));
+  b[0] = (*a).massive[(*a).size];
   for (int i = 0; i < (*a).size; i++) {
     m[i] = (*a).massive[i];
   }
+
   free((*a).massive);
   (*a).massive = NULL;
   (*a).massive = malloc(sizeof(int) * (*a).size);

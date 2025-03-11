@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: ex7
+      - name: buildEx7
         run: make ex7_test
 
       - name: runTest

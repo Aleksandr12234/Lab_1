@@ -1,14 +1,11 @@
-#include "stek.h"
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "stack.h"
 
 void fullTest() {
-  stek stack = CreateStek();
-  if (IsEmpty(&stack))
-    AddStekElements(&stack, 10);
-  if (!IsEmpty(&stack))
-    Pop(&stack);
+  stack stack = createStack();
+  if (isEmpty(&stack))
+    addStackElements(&stack, 10);
+  if (!isEmpty(&stack))
+    pop(&stack);
 }
 
 int main() {
