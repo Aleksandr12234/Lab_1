@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: ex5Build
+        run: make ex5_test
+
       - name: runTest
         run: make runTest
 
